@@ -215,6 +215,7 @@ config_file = 'config.ini'
 
 @click.group(context_settings={'max_content_width': 100}, epilog='Suggestions and bug reports are greatly appreciated: '
              'https://github.com/Diaoul/subliminal/')
+@click.option('--assrt', type=click.STRING, nargs=1, metavar='TOKEN', help='Assrt configuration.')
 @click.option('--addic7ed', type=click.STRING, nargs=2, metavar='USERNAME PASSWORD', help='Addic7ed configuration.')
 @click.option('--legendastv', type=click.STRING, nargs=2, metavar='USERNAME PASSWORD', help='LegendasTV configuration.')
 @click.option('--opensubtitles', type=click.STRING, nargs=2, metavar='USERNAME PASSWORD',
@@ -225,7 +226,7 @@ config_file = 'config.ini'
 @click.option('--debug', is_flag=True, help='Print useful information for debugging subliminal and for reporting bugs.')
 @click.version_option(__version__)
 @click.pass_context
-def subliminal(ctx, addic7ed, legendastv, opensubtitles, subscenter, cache_dir, debug):
+def subliminal(ctx, assrt, addic7ed, legendastv, opensubtitles, subscenter, cache_dir, debug):
     """Subtitles, faster than your thoughts."""
     # create cache directory
     try:
@@ -255,6 +256,8 @@ def subliminal(ctx, addic7ed, legendastv, opensubtitles, subscenter, cache_dir, 
         ctx.obj['provider_configs']['opensubtitles'] = {'username': opensubtitles[0], 'password': opensubtitles[1]}
     if subscenter:
         ctx.obj['provider_configs']['subscenter'] = {'username': subscenter[0], 'password': subscenter[1]}
+    if assrt:
+        ctx.obj['provider_configs']['assrt'] = {'token': assrt}
 
 
 @subliminal.command()

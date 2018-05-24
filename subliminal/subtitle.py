@@ -32,7 +32,8 @@ class Subtitle(object):
     #: Name of the provider that returns that class of subtitle
     provider_name = ''
 
-    def __init__(self, language, hearing_impaired=False, page_link=None, encoding=None):
+    def __init__(self, language, hearing_impaired=False, page_link=None,
+                 encoding=None, extension='.srt'):
         #: Language of the subtitle
         self.language = language
 
@@ -47,6 +48,9 @@ class Subtitle(object):
 
         #: Encoding to decode with when accessing :attr:`text`
         self.encoding = None
+
+        #: File extension
+        self.extension = extension
 
         # validate the encoding
         if encoding:

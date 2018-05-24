@@ -4,6 +4,7 @@ from pkg_resources import EntryPoint
 from stevedore import ExtensionManager
 
 
+
 class RegistrableExtensionManager(ExtensionManager):
     """:class:~stevedore.extensions.ExtensionManager` with support for registration.
 
@@ -46,8 +47,8 @@ class RegistrableExtensionManager(ExtensionManager):
                 eps.append(ep)
 
         return eps
-
     def register(self, entry_point):
+
         """Register an extension
 
         :param str entry_point: extension to register (entry point syntax).
@@ -93,6 +94,7 @@ provider_manager = RegistrableExtensionManager('subliminal.providers', [
     'opensubtitles = subliminal.providers.opensubtitles:OpenSubtitlesProvider',
     'podnapisi = subliminal.providers.podnapisi:PodnapisiProvider',
     'shooter = subliminal.providers.shooter:ShooterProvider',
+    'assrt = subliminal.providers.assrt:AssrtProvider',
     'subscenter = subliminal.providers.subscenter:SubsCenterProvider',
     'thesubdb = subliminal.providers.thesubdb:TheSubDBProvider',
     'tvsubtitles = subliminal.providers.tvsubtitles:TVsubtitlesProvider'
